@@ -1,9 +1,11 @@
 import React, { createContext } from 'react';
 import { useState } from 'react';
 import { RepositoriesDTO } from 'src/screens/Search/application/Search.dto';
-interface HistoryData {
+export interface HistoryData {
    user: string;
    data: RepositoriesDTO[];
+   success: boolean;
+   time: Date;
 }
 interface RepositoriesHistoryProps {
    history: HistoryData[];

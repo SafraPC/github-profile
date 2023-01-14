@@ -27,7 +27,7 @@ const InfoScreen: React.FC = () => {
                        language={item?.language || '-'}
                        lastUpdate={
                           item?.updated_at
-                             ? new Date(item?.updated_at).toLocaleDateString(
+                             ? new Date(item?.updated_at)?.toLocaleDateString(
                                   'pt-BR'
                                )
                              : '-'

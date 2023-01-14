@@ -1,35 +1,36 @@
 import { Container } from '@chakra-ui/react';
 import React, { useContext } from 'react';
-import { useParams } from 'react-router';
 import { Page } from 'src/components/Page/intex';
-import { RepoCard } from 'src/components/RepoCard';
-import { HistoryContext } from 'src/context/history';
+import { UserCard } from 'src/components/UserCard';
+import { HistoryContext, HistoryData } from 'src/context/history';
 
 const HistoryScreen: React.FC = () => {
-   const { history } = useContext(HistoryContext);
-   const { id } = useParams();
-   const user = history.find(
-      item => item.user.toLowerCase() === id?.toLowerCase()
-   );
+   const { history, setHistory } = useContext(HistoryContext);
+
+   const handleDelete = (user: HistoryData) => {
+      const userIndex = history.findIndex(item => item === user);
+      if (userIndex !== -1) {
+         const filteredHistory = history.filter((item, index) => {
+            if (index !== userIndex) {
+               return item;
+            }
+         });
+         setHistory(filteredHistory);
+      }
+   };
 
    return (
       <Page backButton>
          <Container height="100%" p={4}>
-            {user?.data
-               ? user.data.map(item => (
-                    <RepoCard
-                       id={id || ''}
-                       description={item?.description || '-'}
-                       language={item?.language || '-'}
-                       lastUpdate={
-                          item?.updated_at
-                             ? new Date(item?.updated_at).toLocaleDateString(
-                                  'pt-BR'
-                               )
-                             : '-'
-                       }
-                       name={item?.name || '-'}
-                       key={item?.description}
+            {history.length
+               ? history.map((item, index) => (
+                    <UserCard
+                       onDelete={() => handleDelete(item)}
+                       repositories={item?.data?.length || 0}
+                       name={item?.user}
+                       success={item?.success}
+                       time={item?.time}
+                       key={index?.toString()}
                     />
                  ))
                : 'Não há dados para esse usuário'}

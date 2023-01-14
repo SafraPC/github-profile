@@ -20,11 +20,19 @@ const searchController = (): SearchController => {
    const getRepositories = async (username: string) => {
       try {
          setLoading(true);
-         if (
-            history.find(
-               item => item.user.toLowerCase() === username.toLowerCase()
-            )
-         ) {
+         const findedUser = history.find(
+            item => item.user.toLowerCase() === username.toLowerCase()
+         );
+         if (findedUser) {
+            setHistory([
+               {
+                  user: username,
+                  data: findedUser.data,
+                  success: true,
+                  time: new Date(),
+               },
+               ...history,
+            ]);
             navigate(`/search/${username}`);
             return;
          }
@@ -32,18 +40,29 @@ const searchController = (): SearchController => {
 
          if (response.error) {
             toast.error(response.message, TOAST_OPTIONS);
-            return;
-         }
-         if (response.data) {
+
             setHistory([
-               ...history,
                {
                   user: username,
-                  data: response.data,
+                  data: [],
+                  success: false,
+                  time: new Date(),
                },
+               ...history,
             ]);
-            navigate(`/search/${username}`);
+            return;
          }
+
+         setHistory([
+            {
+               user: username,
+               data: response.data,
+               success: true,
+               time: new Date(),
+            },
+            ...history,
+         ]);
+         navigate(`/search/${username}`);
       } finally {
          setLoading(false);
       }
