@@ -4,12 +4,16 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { UserContext } from 'src/context/user';
 import { useTheme } from 'styled-components';
+import { BackButton } from '../BackButton';
 import { Container, Content } from './styles';
 
-const Page: React.FC<{ children: React.ReactNode; totalScreen?: boolean }> = ({
-   children,
-   totalScreen,
-}) => {
+interface PageProps {
+   children: React.ReactNode;
+   totalScreen?: boolean;
+   backButton?: boolean;
+}
+
+const Page: React.FC<PageProps> = ({ children, totalScreen, backButton }) => {
    const navigate = useNavigate();
    const { user } = useContext(UserContext);
    useEffect(() => {
@@ -19,16 +23,19 @@ const Page: React.FC<{ children: React.ReactNode; totalScreen?: boolean }> = ({
    }, [user]);
 
    const { colors } = useTheme();
+
    return (
       <Container totalScreen={totalScreen}>
          <Flex
             position="sticky"
             top={0}
             as="header"
-            justifyContent="flex-end"
+            justifyContent={backButton ? 'space-between' : 'flex-end'}
             alignItems="center"
             p={4}
             bgColor={colors.secondary}>
+            {backButton && <BackButton />}
+
             <Box
                as="button"
                display="flex"

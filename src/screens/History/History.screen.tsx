@@ -4,10 +4,8 @@ import { useParams } from 'react-router';
 import { Page } from 'src/components/Page/intex';
 import { RepoCard } from 'src/components/RepoCard';
 import { HistoryContext } from 'src/context/history';
-import { Label } from './Info.styles';
 
-const InfoScreen: React.FC = () => {
-   console.log('id??? ');
+const HistoryScreen: React.FC = () => {
    const { history } = useContext(HistoryContext);
    const { id } = useParams();
    const user = history.find(
@@ -17,8 +15,6 @@ const InfoScreen: React.FC = () => {
    return (
       <Page backButton>
          <Container height="100%" p={4}>
-            <Label>Buscando dados de {id}</Label>
-            <Label> Total encontrado: {user?.data?.length || 0}</Label>
             {user?.data
                ? user.data.map(item => (
                     <RepoCard
@@ -42,4 +38,4 @@ const InfoScreen: React.FC = () => {
    );
 };
 
-export { InfoScreen };
+export { HistoryScreen };
