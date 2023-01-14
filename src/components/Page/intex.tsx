@@ -4,9 +4,9 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { UserContext } from 'src/context/user';
 import { useTheme } from 'styled-components';
-import { Content } from './styles';
+import { Container, Content } from './styles';
 
-const Page: React.FC<{ children: React.ReactElement }> = ({ children }) => {
+const Page: React.FC<{ children: React.ReactNode }> = ({ children }) => {
    const navigate = useNavigate();
    const { user } = useContext(UserContext);
    useEffect(() => {
@@ -17,7 +17,7 @@ const Page: React.FC<{ children: React.ReactElement }> = ({ children }) => {
 
    const { colors } = useTheme();
    return (
-      <Content>
+      <Container>
          <Flex
             as="header"
             justifyContent="flex-end"
@@ -35,8 +35,8 @@ const Page: React.FC<{ children: React.ReactElement }> = ({ children }) => {
                <Avatar src={user?.avatar_url} marginLeft="5" />
             </Box>
          </Flex>
-         {children}
-      </Content>
+         <Content>{children}</Content>
+      </Container>
    );
 };
 
