@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import { UserContext } from 'src/context/user';
 import { TOAST_OPTIONS } from 'src/styles/globalStyles';
-import { requestUser } from './Home.service';
+import { requestUser } from './Login.service';
 
 export interface HomeController {
    loading: boolean;

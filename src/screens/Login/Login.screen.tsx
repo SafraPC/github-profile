@@ -1,13 +1,13 @@
 import { Center } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { HomeController } from './Home.controller';
+import { HomeController } from './Login.controller';
 import {
    Container,
    Input,
    Label,
    SubmitButton,
    SubmitLabel,
-} from './Home.styles';
+} from './Login.styles';
 
 const HomeScreen: React.FC<HomeController> = ({ getUser, loading }) => {
    const [username, setUsername] = useState('');
