@@ -1,4 +1,4 @@
-import { Button, Center } from '@chakra-ui/react';
+import { Center } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { HomeController } from './Home.controller';
 import {
@@ -14,7 +14,6 @@ const HomeScreen: React.FC<HomeController> = ({ getUser, loading }) => {
    const isButtonEnabled = username.length > 0;
 
    const submit = () => {
-      console.log('???');
       getUser(username);
    };
 
