@@ -1,4 +1,4 @@
-import { Container } from '@chakra-ui/react';
+import { Avatar, Box, Center, Container, Flex } from '@chakra-ui/react';
 import React, { useContext } from 'react';
 import { useParams } from 'react-router';
 import { Page } from 'src/components/Page/intex';
@@ -17,8 +17,18 @@ const InfoScreen: React.FC = () => {
    return (
       <Page backButton>
          <Container height="100%" p={4}>
-            <Label>Buscando dados de {id}</Label>
-            <Label> Total encontrado: {user?.data?.length || 0}</Label>
+            <Center flexDirection="column">
+               <Label>Buscando dados de {user?.userData?.login} </Label>
+               <Label>Total encontrados: {user?.data?.length || 0}</Label>
+               <Avatar
+                  src={user?.userData?.avatar_url}
+                  position="absolute"
+                  right={5}
+                  w={75}
+                  h={75}
+               />
+            </Center>
+
             {user?.data
                ? user.data.map(item => (
                     <RepoCard

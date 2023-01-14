@@ -1,8 +1,10 @@
 import React, { createContext } from 'react';
 import { useState } from 'react';
+import { UserInfoDTO } from 'src/screens/Login/application/Home.dto';
 import { RepositoriesDTO } from 'src/screens/Search/application/Search.dto';
 export interface HistoryData {
    user: string;
+   userData?: UserInfoDTO;
    data: RepositoriesDTO[];
    success: boolean;
    time: Date;

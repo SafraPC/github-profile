@@ -23,16 +23,21 @@ const HistoryScreen: React.FC = () => {
       <Page backButton>
          <Container height="100%" p={4}>
             {history.length
-               ? history.map((item, index) => (
-                    <UserCard
-                       onDelete={() => handleDelete(item)}
-                       repositories={item?.data?.length || 0}
-                       name={item?.user}
-                       success={item?.success}
-                       time={item?.time}
-                       key={index?.toString()}
-                    />
-                 ))
+               ? history
+                    .filter((_item, index) => index <= 20)
+                    .map((item, index) => (
+                       <UserCard
+                          description={
+                             item?.userData?.bio || 'Não há descrição'
+                          }
+                          onDelete={() => handleDelete(item)}
+                          repositories={item?.data?.length || 0}
+                          name={item?.user}
+                          success={item?.success}
+                          time={item?.time}
+                          key={index?.toString()}
+                       />
+                    ))
                : 'Não há dados para esse usuário'}
          </Container>
       </Page>

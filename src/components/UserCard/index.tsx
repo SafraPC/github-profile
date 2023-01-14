@@ -8,6 +8,7 @@ import {
    Button,
    Flex,
    Center,
+   Text,
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { useNavigate } from 'react-router';
@@ -19,10 +20,12 @@ interface UserCardProps {
    time: Date;
    repositories: number;
    onDelete: () => void;
+   description: string;
 }
 
 const UserCard = ({
    name,
+   description,
    success,
    time,
    repositories,
@@ -40,6 +43,9 @@ const UserCard = ({
                {name}
             </Heading>
          </Link>
+         <Text mt={2} fontSize="sm" color="gray.500">
+            {description}
+         </Text>
          <Flex justifyContent="space-between">
             <Flex flexDirection="column">
                <Box>
