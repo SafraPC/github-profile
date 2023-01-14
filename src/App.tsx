@@ -7,6 +7,7 @@ import { GlobalStyles } from './styles/globalStyles';
 import theme from './styles/theme';
 import { ThemeProvider } from 'styled-components';
 import { UserProvider } from './context/user';
+import { HistoryProvider } from './context/history';
 
 function App() {
    return (
@@ -15,7 +16,9 @@ function App() {
             <GlobalStyles />
             <ToastContainer />
             <UserProvider>
-               <AppRoutes />
+               <HistoryProvider>
+                  <AppRoutes />
+               </HistoryProvider>
             </UserProvider>
          </ChakraProvider>
       </ThemeProvider>

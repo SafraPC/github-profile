@@ -30,7 +30,7 @@ export const Input = styled(ChakraInput).attrs(({ theme }) => ({
    textColor: 'white',
    _placeholder: { color: theme.colors.placeholder },
 }))`
-   width: 50%;
+   width: 50% !important;
    margin-top: ${({ theme }) => theme.spacing.xl}px;
 `;
 

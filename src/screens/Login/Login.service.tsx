@@ -16,9 +16,7 @@ export const requestUser = async (
    username: string
 ): Promise<RequestUserResponse> => {
    try {
-      const response = await api.get(
-         `https://api.github.com/users/${username}`
-      );
+      const response = await api.get(`/users/${username}`);
       return {
          data: response.data as UserInfoDTO,
          error: false,
