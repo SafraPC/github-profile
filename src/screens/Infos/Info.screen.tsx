@@ -21,6 +21,7 @@ const InfoScreen: React.FC = () => {
                <Label>Buscando dados de {user?.userData?.login} </Label>
                <Label>Total encontrados: {user?.data?.length || 0}</Label>
                <Avatar
+                  zIndex={-1}
                   src={user?.userData?.avatar_url}
                   position="absolute"
                   right={5}
