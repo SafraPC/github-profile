@@ -6,10 +6,9 @@ interface UserContextProps {
    user: UserInfoDTO;
    setUser: (user: UserInfoDTO) => void;
 }
-export const UserContext = createContext<UserContextProps>({
-   setUser: () => null,
-   user: {},
-});
+export const UserContext = createContext<UserContextProps>(
+   {} as UserContextProps
+);
 
 const UserProvider: React.FC<{ children: React.ReactElement }> = ({
    children,

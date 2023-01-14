@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import { GlobalStyles } from './styles/globalStyles';
 import theme from './styles/theme';
 import { ThemeProvider } from 'styled-components';
+import { UserProvider } from './context/user';
 
 function App() {
    return (
@@ -13,7 +14,9 @@ function App() {
          <ChakraProvider>
             <GlobalStyles />
             <ToastContainer />
-            <AppRoutes />
+            <UserProvider>
+               <AppRoutes />
+            </UserProvider>
          </ChakraProvider>
       </ThemeProvider>
    );

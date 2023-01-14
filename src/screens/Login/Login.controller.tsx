@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { UserContext } from 'src/context/user';
 import { TOAST_OPTIONS } from 'src/styles/globalStyles';
@@ -13,6 +14,8 @@ const homeController = (): LoginController => {
    const [loading, setLoading] = useState(false);
    const { setUser } = useContext(UserContext);
 
+   const navigate = useNavigate();
+
    const getUser = async (username: string) => {
       setLoading(true);
       const response = await requestUser(username);
@@ -22,9 +25,11 @@ const homeController = (): LoginController => {
          toast.error(response.message, TOAST_OPTIONS);
          return;
       }
-
-      toast.success(`Entrou como ${response.data.login}`, TOAST_OPTIONS);
-      setUser(response.data);
+      if (response.data) {
+         toast.success(`Entrou como ${response.data.login}`, TOAST_OPTIONS);
+         setUser(response.data);
+         navigate('/search');
+      }
    };
 
    return {

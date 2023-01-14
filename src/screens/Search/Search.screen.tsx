@@ -1,9 +1,13 @@
 import React from 'react';
-import { Container } from 'src/styles/page';
+import { Page } from 'src/components/Page/intex';
 import { SearchController } from './Search.controller';
 
 const SearchScreen: React.FC<SearchController> = () => {
-   return <Container></Container>;
+   return (
+      <Page>
+         <h1>kkk</h1>
+      </Page>
+   );
 };
 
 export { SearchScreen };
