@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-   height: 100vh;
-   width: 100vw;
+export const Container = styled.div<{ totalScreen?: boolean }>`
    display: flex;
+   height: ${({ totalScreen }) => (totalScreen ? '100vh' : '100%')};
    flex-direction: column;
 `;
 

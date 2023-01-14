@@ -22,14 +22,6 @@ export const SubmitButton = styled(Button).attrs<SubmitButtonProps>(
    margin-top: ${({ theme }) => theme.spacing.xl}px;
 `;
 
-export const Content = styled.div`
-   display: absolute;
-   top: 0;
-   bottom: 0;
-   left: 0;
-   right: 0;
-`;
-
 export const Input = styled(ChakraInput).attrs(({ theme }) => ({
    size: 'md',
    backgroundColor: theme.colors.input,

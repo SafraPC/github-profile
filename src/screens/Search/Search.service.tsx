@@ -4,7 +4,7 @@ import { RepositoriesDTO } from './application/Search.dto';
 
 type RequestReposResponse =
    | {
-        data: RepositoriesDTO;
+        data: RepositoriesDTO[];
         error: false;
      }
    | {
@@ -18,7 +18,7 @@ export const requestRepositories = async (
    try {
       const response = await api.get(`/users/${username}/repos`);
       return {
-         data: response.data as RepositoriesDTO,
+         data: response.data as RepositoriesDTO[],
          error: false,
       };
    } catch (error) {

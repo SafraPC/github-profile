@@ -6,7 +6,10 @@ import { UserContext } from 'src/context/user';
 import { useTheme } from 'styled-components';
 import { Container, Content } from './styles';
 
-const Page: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const Page: React.FC<{ children: React.ReactNode; totalScreen?: boolean }> = ({
+   children,
+   totalScreen,
+}) => {
    const navigate = useNavigate();
    const { user } = useContext(UserContext);
    useEffect(() => {
@@ -17,8 +20,10 @@ const Page: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
    const { colors } = useTheme();
    return (
-      <Container>
+      <Container totalScreen={totalScreen}>
          <Flex
+            position="sticky"
+            top={0}
             as="header"
             justifyContent="flex-end"
             alignItems="center"

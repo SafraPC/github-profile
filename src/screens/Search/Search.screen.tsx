@@ -16,7 +16,7 @@ const SearchScreen: React.FC<SearchController> = ({
    };
 
    return (
-      <Page>
+      <Page totalScreen>
          <Label>Busque um usuário do github!</Label>
          <Input
             placeholder="ex: SafraPC"

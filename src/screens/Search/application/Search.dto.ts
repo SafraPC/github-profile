@@ -23,4 +23,5 @@ export interface RepositoriesDTO {
    visibility?: string;
    watchers?: number;
    watchers_count?: number;
+   updated_at?: string;
 }

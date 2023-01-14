@@ -18,18 +18,34 @@ const searchController = (): SearchController => {
    const isHistoryEnabled = history.length > 0;
 
    const getRepositories = async (username: string) => {
-      setLoading(true);
-      const response = await requestRepositories(username);
-      setLoading(false);
+      try {
+         setLoading(true);
+         if (
+            history.find(
+               item => item.user.toLowerCase() === username.toLowerCase()
+            )
+         ) {
+            navigate(`/search/${username}`);
+            return;
+         }
+         const response = await requestRepositories(username);
 
-      if (response.error) {
-         toast.error(response.message, TOAST_OPTIONS);
-         return;
-      }
-      if (response.data) {
-         console.log(response.data);
-         setHistory([...history, response.data]);
-         navigate('/search/info');
+         if (response.error) {
+            toast.error(response.message, TOAST_OPTIONS);
+            return;
+         }
+         if (response.data) {
+            setHistory([
+               ...history,
+               {
+                  user: username,
+                  data: response.data,
+               },
+            ]);
+            navigate(`/search/${username}`);
+         }
+      } finally {
+         setLoading(false);
       }
    };
    return {
