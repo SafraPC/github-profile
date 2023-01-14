@@ -1,6 +1,6 @@
 import { Center } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { HomeController } from './Login.controller';
+import { LoginController } from './Login.controller';
 import {
    Container,
    Input,
@@ -9,7 +9,7 @@ import {
    SubmitLabel,
 } from './Login.styles';
 
-const HomeScreen: React.FC<HomeController> = ({ getUser, loading }) => {
+const LoginScreen: React.FC<LoginController> = ({ getUser, loading }) => {
    const [username, setUsername] = useState('');
    const isButtonEnabled = username.length > 0;
 
@@ -38,4 +38,4 @@ const HomeScreen: React.FC<HomeController> = ({ getUser, loading }) => {
    );
 };
 
-export { HomeScreen };
+export { LoginScreen };

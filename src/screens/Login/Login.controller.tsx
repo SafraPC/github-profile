@@ -4,12 +4,12 @@ import { UserContext } from 'src/context/user';
 import { TOAST_OPTIONS } from 'src/styles/globalStyles';
 import { requestUser } from './Login.service';
 
-export interface HomeController {
+export interface LoginController {
    loading: boolean;
    getUser: (username: string) => void;
 }
 
-const homeController = (): HomeController => {
+const homeController = (): LoginController => {
    const [loading, setLoading] = useState(false);
    const { setUser } = useContext(UserContext);
 

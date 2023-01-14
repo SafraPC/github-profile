@@ -1,10 +1,10 @@
 import React from 'react';
 import { homeController } from './Login.controller';
-import { HomeScreen } from './Login.screen';
+import { LoginScreen } from './Login.screen';
 
-const Home: React.FC = () => {
+const Login: React.FC = () => {
    const { getUser, loading } = homeController();
-   return <HomeScreen getUser={getUser} loading={loading} />;
+   return <LoginScreen getUser={getUser} loading={loading} />;
 };
 
-export default Home;
+export default Login;

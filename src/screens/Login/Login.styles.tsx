@@ -1,10 +1,12 @@
 import { Button, ButtonProps, Input as ChakraInput } from '@chakra-ui/react';
 import { Text } from '@chakra-ui/react';
 import styled from 'styled-components';
+
 interface SubmitButtonProps extends ButtonProps {
    enabled: boolean;
    loading: boolean;
 }
+
 export const Container = styled.main`
    height: 100vh;
    width: 100vw;
