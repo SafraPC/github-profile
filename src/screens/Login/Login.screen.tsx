@@ -1,13 +1,8 @@
 import { Center } from '@chakra-ui/react';
 import React, { useState } from 'react';
+import { Container } from 'src/styles/page';
 import { LoginController } from './Login.controller';
-import {
-   Container,
-   Input,
-   Label,
-   SubmitButton,
-   SubmitLabel,
-} from './Login.styles';
+import { Input, Label, SubmitButton, SubmitLabel } from './Login.styles';
 
 const LoginScreen: React.FC<LoginController> = ({ getUser, loading }) => {
    const [username, setUsername] = useState('');
