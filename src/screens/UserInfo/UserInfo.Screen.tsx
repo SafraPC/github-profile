@@ -17,11 +17,15 @@ import {
 import React from 'react';
 import { Twitter } from 'react-feather';
 import { BackButton } from 'src/components/BackButton';
+import { UserInfoController } from './UserInfo.controller';
 import { Group, Badge } from './UserInfo.styles';
 
-const UserInfoScreen: React.FC = () => {
+const UserInfoScreen: React.FC<UserInfoController> = ({
+   user,
+   handleChangeUser,
+}) => {
    return (
-      <Flex p={5}>
+      <Flex p={5} h="100vh">
          <Flex flexDirection="column" w="100%" h="100%">
             <BackButton />
             <Box
@@ -35,21 +39,29 @@ const UserInfoScreen: React.FC = () => {
                      alignItems="center"
                      justifyContent="space-evenly"
                      maxWidth={1000}>
-                     <Avatar m={5} h={75} w={75} />
-                     <Flex flexDirection="column" m={5}>
-                        <Text>Nome</Text>
-                        <Text marginTop={1}>Nome2</Text>
+                     <Flex
+                        flexDirection="column"
+                        alignItems="center"
+                        marginRight={10}>
+                        <Avatar m={5} h={75} w={75} src={user?.avatar_url} />
+                        <Text fontSize="lg" as="b">
+                           {user?.name || '-'}
+                        </Text>
+                        <Text fontSize="lg" as="b" marginTop={1}>
+                           {user?.login || '-'}
+                        </Text>
                      </Flex>
-                     <Badge>10 seguidores</Badge>
-                     <Badge>10 seguindo</Badge>
+                     <Badge>{user?.followers} Seguidores</Badge>
+                     <Badge>{user?.following} seguindo</Badge>
 
-                     <Button variant="none">
+                     <Button variant="none" p={0}>
                         <Badge>
-                           10 repositórios <HamburgerIcon marginLeft={5} />
+                           {user?.public_repos} repositórios
+                           <HamburgerIcon marginLeft={2} />
                         </Badge>
                      </Button>
 
-                     <Button variant="none">
+                     <Button variant="none" onClick={handleChangeUser}>
                         <Tooltip
                            color="white"
                            label="Alterar para este usuário"
@@ -59,46 +71,22 @@ const UserInfoScreen: React.FC = () => {
                      </Button>
                   </Flex>
 
-                  <Flex flexDirection="column" marginTop={10}>
-                     <Container maxW="3xl">
-                        <Text fontSize="2xl" as="b">
-                           Bio
-                        </Text>
-                        <Text
-                           fontSize="2xl"
-                           marginTop={5}
-                           marginBottom={10}
-                           textAlign="justify">
-                           Lorem ipsum dolor sit, amet consectetur adipisicing
-                           elit. Delectus, optio officiis. Soluta impedit
-                           molestiae unde autem minima et quae. Tempore Lorem
-                           ipsum dolor sit, amet consectetur adipisicing elit.
-                           Delectus, optio officiis. Soluta impedit molestiae
-                           unde autem minima et quae. Tempore Lorem ipsum dolor
-                           sit, amet consectetur adipisicing elit. Delectus,
-                           optio officiis. Soluta impedit molestiae unde autem
-                           minima et quae. Tempore Lorem ipsum dolor sit, amet
-                           consectetur adipisicing elit. Delectus, optio
-                           officiis. Soluta impedit molestiae unde autem minima
-                           et quae. Tempore Lorem ipsum dolor sit, amet
-                           consectetur adipisicing elit. Delectus, optio
-                           officiis. Soluta impedit molestiae unde autem minima
-                           et quae. Tempore Lorem ipsum dolor sit, amet
-                           consectetur adipisicing elit. Delectus, optio
-                           officiis. Soluta impedit molestiae unde autem minima
-                           et quae. Tempore Lorem ipsum dolor sit, amet
-                           consectetur adipisicing elit. Delectus, optio
-                           officiis. Soluta impedit molestiae unde autem minima
-                           et quae. Tempore Lorem ipsum dolor sit, amet
-                           consectetur adipisicing elit. Delectus, optio
-                           officiis. Soluta impedit molestiae unde autem minima
-                           et quae. Tempore Lorem ipsum dolor sit, amet
-                           consectetur adipisicing elit. Delectus, optio
-                           officiis. Soluta impedit molestiae unde autem minima
-                           et quae. Tempore
-                        </Text>
-                     </Container>
-                  </Flex>
+                  {user?.bio && (
+                     <Flex flexDirection="column" marginTop={20}>
+                        <Container maxW="3xl">
+                           <Text fontSize="2xl" as="b">
+                              Bio
+                           </Text>
+                           <Text
+                              fontSize="2xl"
+                              marginTop={5}
+                              marginBottom={10}
+                              textAlign="justify">
+                              {user?.bio}
+                           </Text>
+                        </Container>
+                     </Flex>
+                  )}
                </Box>
 
                <Container maxW="2xl" centerContent paddingBottom={5}>
@@ -107,22 +95,30 @@ const UserInfoScreen: React.FC = () => {
                      display="flex"
                      justifyContent="space-between"
                      alignItems="center">
-                     <Group>
-                        <EmailIcon w={25} h={25} />
-                        <Text marginLeft={5}>Email</Text>
-                     </Group>
-                     <Group>
-                        <Twitter size={25} />
-                        <Text marginLeft={5}>Email</Text>
-                     </Group>
-                     <Group>
-                        <InfoIcon w={25} h={25} />
-                        <Text marginLeft={5}>Company</Text>
-                     </Group>
-                     <Group>
-                        <LinkIcon w={25} h={25} />
-                        <Text marginLeft={5}>Email</Text>
-                     </Group>
+                     {user?.email && (
+                        <Group>
+                           <EmailIcon w={25} h={25} />
+                           <Text marginLeft={5}>{user.email}</Text>
+                        </Group>
+                     )}
+                     {user?.twitter_username && (
+                        <Group>
+                           <Twitter size={25} />
+                           <Text marginLeft={5}>{user.twitter_username}</Text>
+                        </Group>
+                     )}
+                     {user?.company && (
+                        <Group>
+                           <InfoIcon w={25} h={25} />
+                           <Text marginLeft={5}>{user.company}</Text>
+                        </Group>
+                     )}
+                     {user?.blog && (
+                        <Group>
+                           <LinkIcon w={25} h={25} />
+                           <Text marginLeft={5}>{user.blog}</Text>
+                        </Group>
+                     )}
                   </Flex>
                </Container>
             </Box>

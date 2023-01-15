@@ -17,6 +17,7 @@ const HistoryScreen: React.FC<HistoryController> = ({
                   .filter((_item, index) => index <= 20)
                   .map((item, index) => (
                      <UserCard
+                        position={index}
                         description={item?.userData?.bio || 'Não há descrição'}
                         onDelete={() => handleDelete(item)}
                         repositories={item?.data?.length || 0}

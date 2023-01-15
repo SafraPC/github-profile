@@ -1,4 +1,4 @@
-import { Avatar, Box, Center, Container, Flex } from '@chakra-ui/react';
+import { Avatar, Center, Container } from '@chakra-ui/react';
 import React, { useContext } from 'react';
 import { useParams } from 'react-router';
 import NotFound from 'src/components/NotFound';

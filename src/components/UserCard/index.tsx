@@ -16,6 +16,7 @@ import { Link } from 'react-router-dom';
 
 interface UserCardProps {
    name: string;
+   position: number;
    success: boolean;
    time: Date;
    repositories: number;
@@ -24,6 +25,7 @@ interface UserCardProps {
 }
 
 const UserCard = ({
+   position,
    name,
    description,
    success,
@@ -38,7 +40,7 @@ const UserCard = ({
 
    return (
       <Box p={5} shadow="md" borderWidth="1px" marginTop="4">
-         <Link to={`/user/${name}`}>
+         <Link to={`/user/${position}`}>
             <Heading as="h3" size="lg">
                {name}
             </Heading>

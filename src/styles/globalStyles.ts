@@ -37,7 +37,7 @@ body{
 `;
 
 export const TOAST_OPTIONS: ToastOptions = {
-   position: 'top-right',
+   position: 'bottom-right',
    autoClose: 6500,
    hideProgressBar: false,
    closeOnClick: true,

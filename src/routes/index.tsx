@@ -15,6 +15,7 @@ const AppRoutes = () => {
             <Route path="/history" element={<History />} />
             <Route path="/search/:id" element={<Infos />} />
             <Route path="/user" element={<UserInfo />} />
+            <Route path="/user/:id" element={<UserInfo />} />
          </Routes>
       </Router>
    );

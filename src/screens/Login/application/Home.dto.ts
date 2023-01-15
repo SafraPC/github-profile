@@ -5,9 +5,10 @@ export interface UserInfoDTO {
    company?: string;
    email?: null;
    events_url?: string;
+   twitter_username?: string;
    followers?: number;
    followers_url?: string;
-   following?: 18;
+   following?: number;
    following_url?: string;
    gists_url?: string;
    location?: string;

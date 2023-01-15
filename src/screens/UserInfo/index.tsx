@@ -1,8 +1,10 @@
 import React from 'react';
+import { userInfoController } from './UserInfo.controller';
 import { UserInfoScreen } from './UserInfo.Screen';
 
 const UserInfo: React.FC = () => {
-   return <UserInfoScreen />;
+   const { user, handleChangeUser } = userInfoController();
+   return <UserInfoScreen user={user} handleChangeUser={handleChangeUser} />;
 };
 
 export default UserInfo;
