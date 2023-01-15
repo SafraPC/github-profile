@@ -8,12 +8,12 @@ import theme from './styles/theme';
 import { ThemeProvider } from 'styled-components';
 import { UserProvider } from './context/user';
 import { HistoryProvider } from './context/history';
+import { chakraTheme } from './styles/chakraTheme';
 
 function App() {
    return (
       <ThemeProvider theme={theme}>
-         <ChakraProvider>
-            <GlobalStyles />
+         <ChakraProvider theme={chakraTheme}>
             <ToastContainer />
             <UserProvider>
                <HistoryProvider>
@@ -21,6 +21,7 @@ function App() {
                </HistoryProvider>
             </UserProvider>
          </ChakraProvider>
+         <GlobalStyles />
       </ThemeProvider>
    );
 }
