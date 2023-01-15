@@ -5,15 +5,22 @@ import { useNavigate } from 'react-router';
 import { UserContext } from 'src/context/user';
 import { useTheme } from 'styled-components';
 import { BackButton } from '../BackButton';
+import { SearchAnother } from '../SearchAnother';
 import { Container, Content } from './styles';
 
 interface PageProps {
    children: React.ReactNode;
    totalScreen?: boolean;
+   searchAnother?: boolean;
    backButton?: boolean;
 }
 
-const Page: React.FC<PageProps> = ({ children, totalScreen, backButton }) => {
+const Page: React.FC<PageProps> = ({
+   children,
+   totalScreen,
+   backButton,
+   searchAnother,
+}) => {
    const navigate = useNavigate();
    const { user } = useContext(UserContext);
 
@@ -39,7 +46,10 @@ const Page: React.FC<PageProps> = ({ children, totalScreen, backButton }) => {
             alignItems="center"
             p={4}
             bgColor={colors.secondary}>
-            {backButton && <BackButton />}
+            <Box>
+               {backButton && <BackButton />}
+               {searchAnother && <SearchAnother />}
+            </Box>
 
             <Box
                as="button"

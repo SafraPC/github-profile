@@ -15,7 +15,7 @@ const InfoScreen: React.FC = () => {
    );
 
    return (
-      <Page backButton>
+      <Page backButton searchAnother>
          <Container height="100%" p={4}>
             <Center flexDirection="column">
                <Avatar

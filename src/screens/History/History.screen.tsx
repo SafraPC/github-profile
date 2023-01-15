@@ -10,7 +10,7 @@ const HistoryScreen: React.FC<HistoryController> = ({
    history,
 }) => {
    return (
-      <Page backButton>
+      <Page backButton searchAnother>
          <Container height="100%" p={4}>
             {history.length ? (
                history
