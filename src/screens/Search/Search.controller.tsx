@@ -45,11 +45,16 @@ const searchController = (): SearchController => {
             navigate(`/search/${username}`);
             return;
          }
-         const response = await requestRepositories(username);
-         const userData = await requestUser(username);
 
-         if (response.error) {
-            toast.error(response.message, TOAST_OPTIONS);
+         const responses = await Promise.all([
+            await requestRepositories(username),
+            await requestUser(username),
+         ]);
+         const searchData = responses[0];
+         const userData = responses[1];
+
+         if (searchData.error) {
+            toast.error(searchData.message, TOAST_OPTIONS);
             setHistory([errorObj, ...history]);
             return;
          }
@@ -64,7 +69,7 @@ const searchController = (): SearchController => {
             {
                userData: userData.data,
                user: username,
-               data: response.data,
+               data: searchData.data,
                success: true,
                time: new Date(),
             },
