@@ -19,11 +19,19 @@ import { Twitter } from 'react-feather';
 import { BackButton } from 'src/components/BackButton';
 import { UserInfoController } from './UserInfo.controller';
 import { Group, Badge } from './UserInfo.styles';
+import { GiFactory } from 'react-icons/gi';
+import { CgWebsite } from 'react-icons/cg';
+import { useNavigate } from 'react-router';
 
 const UserInfoScreen: React.FC<UserInfoController> = ({
    user,
    handleChangeUser,
 }) => {
+   const navigate = useNavigate();
+
+   const goToRepositories = () => {
+      navigate(`/search/${user?.login}`);
+   };
    return (
       <Flex p={5} h="100vh">
          <Flex flexDirection="column" w="100%" h="100%">
@@ -54,7 +62,7 @@ const UserInfoScreen: React.FC<UserInfoController> = ({
                      <Badge>{user?.followers} Seguidores</Badge>
                      <Badge>{user?.following} seguindo</Badge>
 
-                     <Button variant="none" p={0}>
+                     <Button variant="none" p={0} onClick={goToRepositories}>
                         <Badge>
                            {user?.public_repos} repositórios
                            <HamburgerIcon marginLeft={2} />
@@ -109,13 +117,13 @@ const UserInfoScreen: React.FC<UserInfoController> = ({
                      )}
                      {user?.company && (
                         <Group>
-                           <InfoIcon w={25} h={25} />
+                           <GiFactory size={25} color="white" />
                            <Text marginLeft={5}>{user.company}</Text>
                         </Group>
                      )}
                      {user?.blog && (
                         <Group>
-                           <LinkIcon w={25} h={25} />
+                           <CgWebsite size={25} color="white" />
                            <Text marginLeft={5}>{user.blog}</Text>
                         </Group>
                      )}
