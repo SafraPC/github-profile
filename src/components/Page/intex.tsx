@@ -16,6 +16,11 @@ interface PageProps {
 const Page: React.FC<PageProps> = ({ children, totalScreen, backButton }) => {
    const navigate = useNavigate();
    const { user } = useContext(UserContext);
+
+   const goToUser = () => {
+      navigate('/user');
+   };
+
    useEffect(() => {
       if (!user?.login) {
          navigate('/');
@@ -40,7 +45,8 @@ const Page: React.FC<PageProps> = ({ children, totalScreen, backButton }) => {
                as="button"
                display="flex"
                flexDirection="row"
-               alignItems="center">
+               alignItems="center"
+               onClick={goToUser}>
                <Text fontWeight="bold" fontSize="xl">
                   {user?.login || 'nao tem'}
                </Text>

@@ -7,7 +7,6 @@ import { HistoryContext } from 'src/context/history';
 import { Label } from './Info.styles';
 
 const InfoScreen: React.FC = () => {
-   console.log('id??? ');
    const { history } = useContext(HistoryContext);
    const { id } = useParams();
    const user = history.find(

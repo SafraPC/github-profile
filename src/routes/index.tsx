@@ -4,6 +4,7 @@ import { History } from 'src/screens/History';
 import { Infos } from 'src/screens/Infos';
 import Home from 'src/screens/Login';
 import { Search } from 'src/screens/Search';
+import UserInfo from 'src/screens/UserInfo';
 
 const AppRoutes = () => {
    return (
@@ -13,6 +14,7 @@ const AppRoutes = () => {
             <Route path="/search" element={<Search />} />
             <Route path="/history" element={<History />} />
             <Route path="/search/:id" element={<Infos />} />
+            <Route path="/user" element={<UserInfo />} />
          </Routes>
       </Router>
    );

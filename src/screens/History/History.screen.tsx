@@ -1,24 +1,13 @@
 import { Container } from '@chakra-ui/react';
-import React, { useContext } from 'react';
+import React from 'react';
 import { Page } from 'src/components/Page/intex';
 import { UserCard } from 'src/components/UserCard';
-import { HistoryContext, HistoryData } from 'src/context/history';
+import { HistoryController } from './History.controller';
 
-const HistoryScreen: React.FC = () => {
-   const { history, setHistory } = useContext(HistoryContext);
-
-   const handleDelete = (user: HistoryData) => {
-      const userIndex = history.findIndex(item => item === user);
-      if (userIndex !== -1) {
-         const filteredHistory = history.filter((item, index) => {
-            if (index !== userIndex) {
-               return item;
-            }
-         });
-         setHistory(filteredHistory);
-      }
-   };
-
+const HistoryScreen: React.FC<HistoryController> = ({
+   handleDelete,
+   history,
+}) => {
    return (
       <Page backButton>
          <Container height="100%" p={4}>
