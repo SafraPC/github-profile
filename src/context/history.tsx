@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { createContext, useEffect } from 'react';
 import { useState } from 'react';
 import { UserInfoDTO } from 'src/screens/Login/application/Home.dto';
 import { RepositoriesDTO } from 'src/screens/Search/application/Search.dto';
@@ -20,7 +20,13 @@ export const HistoryContext = createContext<RepositoriesHistoryProps>(
 const HistoryProvider: React.FC<{ children: React.ReactElement }> = ({
    children,
 }) => {
-   const [history, setHistory] = useState([] as HistoryData[]);
+   const storedHistory = JSON.parse(localStorage.getItem('history') || '[]');
+   console.log(storedHistory);
+   const [history, setHistory] = useState(storedHistory as HistoryData[]);
+
+   useEffect(() => {
+      localStorage.setItem('history', JSON.stringify(history));
+   }, [history]);
 
    return (
       <HistoryContext.Provider value={{ history, setHistory }}>

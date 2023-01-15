@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { createContext, useEffect } from 'react';
 import { useState } from 'react';
 import { UserInfoDTO } from 'src/screens/Login/application/Home.dto';
 
@@ -13,7 +13,12 @@ export const UserContext = createContext<UserContextProps>(
 const UserProvider: React.FC<{ children: React.ReactElement }> = ({
    children,
 }) => {
-   const [user, setUser] = useState({});
+   const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
+   const [user, setUser] = useState(storedUser);
+
+   useEffect(() => {
+      localStorage.setItem('user', JSON.stringify(user));
+   }, [user]);
 
    return (
       <UserContext.Provider value={{ user, setUser }}>

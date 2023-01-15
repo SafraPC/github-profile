@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { UserContext } from 'src/context/user';
@@ -12,7 +12,13 @@ export interface LoginController {
 
 const homeController = (): LoginController => {
    const [loading, setLoading] = useState(false);
-   const { setUser } = useContext(UserContext);
+   const { setUser, user } = useContext(UserContext);
+
+   useEffect(() => {
+      if (user?.login) {
+         navigate('/search');
+      }
+   }, []);
 
    const navigate = useNavigate();
 

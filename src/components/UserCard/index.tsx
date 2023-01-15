@@ -56,7 +56,7 @@ const UserCard = ({
                   </Stack>
                   <Badge mt={2}>
                      Pesquisado:{' '}
-                     {time?.toLocaleDateString('pt-BR', {
+                     {new Date(time)?.toLocaleDateString('pt-BR', {
                         hour: 'numeric',
                         minute: 'numeric',
                         second: 'numeric',
