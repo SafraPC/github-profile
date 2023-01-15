@@ -1,6 +1,6 @@
-import { Avatar, Center, Container } from '@chakra-ui/react';
+import { Avatar, Center, Container, Link } from '@chakra-ui/react';
 import React, { useContext } from 'react';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import NotFound from 'src/components/NotFound';
 import { Page } from 'src/components/Page/intex';
 import { RepoCard } from 'src/components/RepoCard';
@@ -10,9 +10,14 @@ import { Label } from './Info.styles';
 const InfoScreen: React.FC = () => {
    const { history } = useContext(HistoryContext);
    const { id } = useParams();
+   const navigate = useNavigate();
    const user = history.find(
       item => item.user.toLowerCase() === id?.toLowerCase()
    );
+
+   const userIndex = history.findIndex(item => item === user);
+
+   const goToUserInfo = () => [navigate(`/user/${userIndex}`)];
 
    return (
       <Page backButton searchAnother>
@@ -25,7 +30,13 @@ const InfoScreen: React.FC = () => {
                   w={55}
                   h={55}
                />
-               <Label>Buscando dados de {user?.userData?.login || id} </Label>
+               <Label>
+                  Buscando dados de
+                  <Link as="b" onClick={goToUserInfo}>
+                     {' '}
+                     {user?.userData?.login || id}
+                  </Link>
+               </Label>
                <Label>Total encontrados: {user?.data?.length || 0}</Label>
             </Center>
 
