@@ -14,7 +14,7 @@ const HistoryScreen: React.FC<HistoryController> = ({
          <Container height="100%" p={4}>
             {history.length ? (
                history
-                  .filter((_item, index) => index <= 20)
+                  .filter((_item, index) => index <= 19)
                   .map((item, index) => (
                      <UserCard
                         position={index}

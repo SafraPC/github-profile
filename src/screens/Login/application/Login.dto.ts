@@ -3,7 +3,7 @@ export interface UserInfoDTO {
    bio?: string;
    blog?: string;
    company?: string;
-   email?: null;
+   email?: string;
    events_url?: string;
    twitter_username?: string;
    followers?: number;

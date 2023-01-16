@@ -1,6 +1,6 @@
 import React, { createContext, useEffect } from 'react';
 import { useState } from 'react';
-import { UserInfoDTO } from 'src/screens/Login/application/Home.dto';
+import { UserInfoDTO } from 'src/screens/Login/application/Login.dto';
 
 interface UserContextProps {
    user: UserInfoDTO;

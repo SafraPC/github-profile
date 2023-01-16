@@ -1,6 +1,6 @@
 import api from 'src/service/api';
 import { validateError } from 'src/utils/validateAxiosError';
-import { UserInfoDTO } from './application/Home.dto';
+import { UserInfoDTO } from './application/Login.dto';
 
 type RequestUserResponse =
    | {

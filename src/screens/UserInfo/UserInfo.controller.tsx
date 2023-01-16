@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { HistoryContext } from 'src/context/history';
 import { UserContext } from 'src/context/user';
 import { TOAST_OPTIONS } from 'src/styles/globalStyles';
-import { UserInfoDTO } from '../Login/application/Home.dto';
+import { UserInfoDTO } from '../Login/application/Login.dto';
 
 export interface UserInfoController {
    user: UserInfoDTO;

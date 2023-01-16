@@ -1,7 +1,8 @@
 import React, { createContext, useEffect } from 'react';
 import { useState } from 'react';
-import { UserInfoDTO } from 'src/screens/Login/application/Home.dto';
+import { UserInfoDTO } from 'src/screens/Login/application/Login.dto';
 import { RepositoriesDTO } from 'src/screens/Search/application/Search.dto';
+
 export interface HistoryData {
    user: string;
    userData?: UserInfoDTO;
@@ -9,6 +10,7 @@ export interface HistoryData {
    success: boolean;
    time: Date;
 }
+
 interface RepositoriesHistoryProps {
    history: HistoryData[];
    setHistory: (user: HistoryData[]) => void;
