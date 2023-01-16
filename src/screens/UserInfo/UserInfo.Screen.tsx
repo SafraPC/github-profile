@@ -1,10 +1,4 @@
-import {
-   EditIcon,
-   EmailIcon,
-   HamburgerIcon,
-   InfoIcon,
-   LinkIcon,
-} from '@chakra-ui/icons';
+import { EditIcon, EmailIcon, HamburgerIcon } from '@chakra-ui/icons';
 import {
    Avatar,
    Box,
@@ -21,17 +15,12 @@ import { UserInfoController } from './UserInfo.controller';
 import { Group, Badge } from './UserInfo.styles';
 import { GiFactory } from 'react-icons/gi';
 import { CgWebsite } from 'react-icons/cg';
-import { useNavigate } from 'react-router';
 
 const UserInfoScreen: React.FC<UserInfoController> = ({
    user,
    handleChangeUser,
+   goToRepositories,
 }) => {
-   const navigate = useNavigate();
-
-   const goToRepositories = () => {
-      navigate(`/search/${user?.login}`);
-   };
    return (
       <Flex p={5} h="100vh">
          <Flex flexDirection="column" w="100%" h="100%">
@@ -39,15 +28,18 @@ const UserInfoScreen: React.FC<UserInfoController> = ({
             <Box
                h="100%"
                display="flex"
+               flexWrap="wrap"
                flexDirection="column"
                justifyContent="space-between">
                <Box display="flex" flexDirection="column" alignItems="center">
                   <Flex
                      p={2}
+                     flexWrap="wrap"
                      alignItems="center"
                      justifyContent="space-evenly"
                      maxWidth={1000}>
                      <Flex
+                        flexWrap="wrap"
                         flexDirection="column"
                         alignItems="center"
                         marginRight={10}>

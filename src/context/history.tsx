@@ -23,7 +23,6 @@ const HistoryProvider: React.FC<{ children: React.ReactElement }> = ({
    children,
 }) => {
    const storedHistory = JSON.parse(localStorage.getItem('history') || '[]');
-   console.log(storedHistory);
    const [history, setHistory] = useState(storedHistory as HistoryData[]);
 
    useEffect(() => {

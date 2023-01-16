@@ -36,6 +36,7 @@ export const Input = styled(ChakraInput).attrs(({ theme }) => ({
    focusBorderColor: theme.colors.input,
    borderColor: theme.colors.input,
    textColor: 'white',
+   maxWidth: 750,
    _placeholder: { color: theme.colors.placeholder },
 }))`
    width: 50% !important;
