@@ -41,9 +41,15 @@ const userInfoController = (): UserInfoController => {
       if (!user?.login) {
          return;
       }
-      const findedUser = history.find(item => item.user === user?.login);
-      if (findedUser) {
-         navigate(`/search/${user?.login}`);
+
+      const findedUserByParam = history[Number(params?.id)]?.userData;
+      const findedUser = history.find(
+         item => item.user === user?.login
+      )?.userData;
+
+      const usr = findedUserByParam || findedUser;
+      if (usr?.login) {
+         navigate(`/search/${usr.login}`);
          return;
       }
 
@@ -73,7 +79,7 @@ const userInfoController = (): UserInfoController => {
          },
          ...history,
       ]);
-      navigate(`/search/${user?.login}`);
+      navigate(`/search/${user.login}`);
    };
 
    useEffect(() => {
